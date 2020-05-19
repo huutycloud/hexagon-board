@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "754274256956",
+    "firebase_url": "https://hexagon-hackthon-2020.firebaseio.com",
+    "project_id": "hexagon-hackthon-2020",
+    "storage_bucket": "hexagon-hackthon-2020.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:754274256956:android:6527c965c7d77a708c9b39",
+        "android_client_info": {
+          "package_name": "hexagon.board"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "754274256956-sb9trb7ljtbjpro54ggkef5ts6i5sei3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCGeH4RWMcXHVqFG-3iXNBmL89biCpHChw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "754274256956-sb9trb7ljtbjpro54ggkef5ts6i5sei3.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
