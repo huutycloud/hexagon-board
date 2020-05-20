@@ -1,16 +1,25 @@
 package hexagon.board;
 
+import android.Manifest;
 import android.app.AlertDialog;
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.location.Address;
 import android.location.Geocoder;
+import android.location.Location;
+import android.location.LocationManager;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
 
 import com.google.android.gms.maps.model.LatLng;
 import com.google.firebase.auth.FirebaseAuth;
@@ -41,7 +50,11 @@ public class AddAlertActivity extends AppCompatActivity implements View.OnClickL
 
     private String subject, content, location;
     private LatLng latLng;
-
+    private Button btnPickLocation;
+    int PLACE_PICKER_REQUEST = 1;
+    private static final int REQUEST_LOCATION = 1;
+    LocationManager locationManager;
+    String latitude, longitude;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -53,6 +66,19 @@ public class AddAlertActivity extends AppCompatActivity implements View.OnClickL
         etLocation = (EditText) findViewById(R.id.etLocation);
         bCreateAlert = (Button) findViewById(R.id.bCreateAlert);
         bDiscardAlert = (Button) findViewById(R.id.bDiscardAlert);
+        btnPickLocation = (Button) findViewById(R.id.btnPickLocation);
+        btnPickLocation.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+                if (!locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
+                    OnGPS();
+                } else {
+                    getLocation();
+                }
+            }
+        });
+
 
         // Init Firebase Authentication
         mUser = FirebaseAuth.getInstance().getCurrentUser();
@@ -81,7 +107,8 @@ public class AddAlertActivity extends AppCompatActivity implements View.OnClickL
     }
 
     private void saveNewAlert(String uid, String subject, String content, String location){
-        latLng = convertAddressToLatLng(location);
+//        latLng = convertAddressToLatLng(location);
+        latLng = new LatLng(16.063527, 108.246575);
         alertPOJO = new AlertPOJO(uid, subject, content, latLng);
         mFirebaseDatabase = mFirebaseDatabase.child("alerts").push();
         mFirebaseDatabase.setValue(alertPOJO);
@@ -139,6 +166,7 @@ public class AddAlertActivity extends AppCompatActivity implements View.OnClickL
         AddAlertActivity.this.startActivity(mainIntent);
     }
 
+
     // Override method for all the user's action
     @Override
     public void onClick(View v){
@@ -149,7 +177,39 @@ public class AddAlertActivity extends AppCompatActivity implements View.OnClickL
             backMain();
     }
 
-
-
+    private void OnGPS() {
+        final AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setMessage("Enable GPS").setCancelable(false).setPositiveButton("Yes", new  DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                startActivity(new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS));
+            }
+        }).setNegativeButton("No", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.cancel();
+            }
+        });
+        final AlertDialog alertDialog = builder.create();
+        alertDialog.show();
+    }
+    private void getLocation() {
+        if (ActivityCompat.checkSelfPermission(
+                AddAlertActivity.this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(
+                AddAlertActivity.this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, REQUEST_LOCATION);
+        } else {
+            Location locationGPS = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
+            if (locationGPS != null) {
+                double lat = locationGPS.getLatitude();
+                double longi = locationGPS.getLongitude();
+                latitude = String.valueOf(lat);
+                longitude = String.valueOf(longi);
+                etLocation.setText(latitude + "," +longitude);
+            } else {
+                Toast.makeText(this, "Unable to find location.", Toast.LENGTH_SHORT).show();
+            }
+        }
+    }
 }
 

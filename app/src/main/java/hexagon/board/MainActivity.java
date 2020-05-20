@@ -57,7 +57,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 for (DataSnapshot value : dataSnapshot.getChildren())
-                    alertList.add(value.getKey().toString());
+                    alertList.add(value.child("subject").getValue().toString());
             }
 
             @Override

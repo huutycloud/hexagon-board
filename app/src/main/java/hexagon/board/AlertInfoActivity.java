@@ -60,7 +60,7 @@ public class AlertInfoActivity extends AppCompatActivity implements View.OnClick
             public void onDataChange(DataSnapshot dataSnapshot) {
                 tvSubjectArea.setText(dataSnapshot.child("subject").getValue().toString());
                 tvContentArea.setText(dataSnapshot.child("content").getValue().toString());
-                tvLocationArea.setText(dataSnapshot.child("location").getValue().toString());
+//                tvLocationArea.setText(dataSnapshot.child("location").getValue().toString());
             }
 
             @Override
