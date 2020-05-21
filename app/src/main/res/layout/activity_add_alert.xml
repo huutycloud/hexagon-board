@@ -4,80 +4,116 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/alert"
     tools:context=".AddAlertActivity">
-    <EditText
-        android:id="@+id/etSubject"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginTop="8dp"
-        android:ems="10"
-        android:hint="Subject"
-        android:inputType="text"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/etContent"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="360dp"
+        android:layout_height="120dp"
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
-        android:layout_marginTop="8dp"
         android:ems="10"
-        android:hint="Content"
+        android:hint="Mô tả chi tiết vấn đề cần hỗ trợ"
         android:inputType="textMultiLine"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etSubject" />
+        app:layout_constraintTop_toBottomOf="@+id/spinner" />
+
 
     <Button
         android:id="@+id/bCreateAlert"
-        android:layout_width="88dp"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="140dp"
-        android:layout_marginTop="8dp"
-        android:text="Create"
+        android:layout_width="181dp"
+        android:layout_height="71dp"
+        android:layout_marginLeft="96dp"
+        android:layout_marginTop="48dp"
+        android:background="#ff5252"
+        android:textColor="#ffffff"
+        android:textStyle="bold"
+        android:text="Gửi yêu cầu hỗ trợ"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etLocation" />
+        app:layout_constraintTop_toBottomOf="@+id/btnPickLocation" />
 
     <Button
         android:id="@+id/bDiscardAlert"
-        android:layout_width="88dp"
-        android:layout_height="wrap_content"
+        android:layout_width="62dp"
+        android:layout_height="70dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="48dp"
         android:layout_marginRight="84dp"
-        android:text="Discard"
-        app:layout_constraintRight_toRightOf="parent"
-        android:layout_marginTop="8dp"
-        app:layout_constraintTop_toBottomOf="@+id/etLocation"
+        android:text="Bỏ qua"
+        android:background="#4fc3f7"
+        android:textColor="#6200ea"
+        app:layout_constraintHorizontal_bias="0.297"
         app:layout_constraintLeft_toRightOf="@+id/bCreateAlert"
-        android:layout_marginLeft="8dp" />
-
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnPickLocation" />
 
     <EditText
         android:id="@+id/etLocation"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginRight="8dp"
+        android:layout_width="361dp"
+        android:layout_height="43dp"
         android:ems="10"
-        android:hint="Location"
+        android:hint="Tọa độ"
         android:inputType="textPostalAddress"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/etContent" />
 
     <Button
         android:id="@+id/btnPickLocation"
+        android:layout_width="161dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="8dp"
+        android:background="#ff5252"
+        android:text="Lấy vị trí hiện tại"
+        android:textColor="#ffffff"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etLocation" />
+
+    <Spinner
+        android:id="@+id/spinner"
+        android:layout_width="360dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="8dp"
+        android:spinnerMode="dropdown"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView5" />
+
+    <TextView
+        android:id="@+id/textView5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:text="PickLocation"
+        android:layout_marginStart="28dp"
+        android:textSize="16dp"
+        android:textColor="#6200ea"
+        android:textStyle="bold"
+        android:layout_marginTop="124dp"
+        android:text="Chọn tình huống cần hỗ trợ"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="59dp"
+        android:layout_height="54dp"
+        app:layout_constraintBottom_toBottomOf="@+id/etContent"
+        app:layout_constraintEnd_toEndOf="@+id/etContent"
+        app:layout_constraintTop_toTopOf="@+id/etContent"
+        app:srcCompat="@drawable/googlevoice" />
+
+    <Button
+        android:id="@+id/button3"
+        android:layout_width="166dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="44dp"
+        android:layout_marginTop="8dp"
+        android:background="#ff5252"
+        android:textColor="#ffffff"
+        android:text="Chọn ví trí"
+        app:layout_constraintStart_toEndOf="@+id/btnPickLocation"
         app:layout_constraintTop_toBottomOf="@+id/etLocation" />
 </androidx.constraintlayout.widget.ConstraintLayout>
 

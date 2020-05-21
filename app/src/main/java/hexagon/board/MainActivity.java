@@ -56,8 +56,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         mFirebaseDatabase.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                for (DataSnapshot value : dataSnapshot.getChildren())
-                    alertList.add(value.child("subject").getValue().toString());
+                for (DataSnapshot value : dataSnapshot.getChildren()) {
+                    alertList.add(value.getKey() + "_" + value.child("subject").getValue().toString());
+                    lvAlertList.invalidateViews();
+                }
             }
 
             @Override

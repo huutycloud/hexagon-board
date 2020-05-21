@@ -176,7 +176,7 @@ public class MapsActivity extends FragmentActivity implements
                         pinLatLng = new LatLng(pinLat, pinLng);
                         pin = new MarkerOptions()
                                 .position(pinLatLng)
-                                .title(dataSnapshot.child("subject").getValue().toString());
+                                .title(value.child("subject").getValue().toString());
                         mMap.addMarker(pin);
                     }
                 }

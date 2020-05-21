@@ -4,27 +4,29 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/alert"
     tools:context=".AlertInfoActivity">
+
     <TextView
         android:id="@+id/tvSubject"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="8dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:text="Subject:"
+        android:layout_marginTop="152dp"
+        android:text="Trường hợp cần hỗ trợ:"
+        android:textColor="#d50000"
+        android:textSize="20dp"
+        android:textStyle="bold"
         app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/tvSubjectArea"
         android:layout_width="363dp"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
         android:textSize="16sp"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -36,51 +38,56 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="8dp"
-        android:layout_marginTop="8dp"
-        android:text="Content:"
+        android:layout_marginTop="44dp"
+        android:text="Nội dung cần hỗ trợ:"
+        android:textColor="#d50000"
+        android:textSize="20dp"
+        android:textStyle="bold"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvSubjectArea"
-        android:layout_marginStart="8dp" />
+        app:layout_constraintTop_toBottomOf="@+id/tvSubjectArea" />
 
     <TextView
+        android:id="@+id/tvContentArea"
         android:layout_width="364dp"
         android:layout_height="47dp"
+        android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
         android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvContent"
-        android:id="@+id/tvContentArea"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp" />
+        app:layout_constraintTop_toBottomOf="@+id/tvContent" />
 
     <Button
         android:id="@+id/bComment"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Comment"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        app:layout_constraintTop_toBottomOf="@+id/tvLocationArea"
         android:layout_marginLeft="8dp"
-        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginTop="48dp"
         android:layout_marginRight="8dp"
-        app:layout_constraintRight_toRightOf="parent" />
+        android:background="#d50000"
+        android:text="Đã giải quyết"
+        android:textColor="#FFF"
+        android:textStyle="bold"
+        app:layout_constraintHorizontal_bias="0.47"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvLocationArea" />
 
     <ListView
         android:id="@+id/lvCommentArea"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginBottom="8dp"
         android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
         android:layout_marginRight="8dp"
+        android:layout_marginBottom="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        android:layout_marginTop="8dp"
         app:layout_constraintTop_toBottomOf="@+id/tvCommentSection" />
 
     <TextView
@@ -88,11 +95,15 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="8dp"
+        android:layout_marginTop="4dp"
         android:layout_marginRight="8dp"
-        android:text="Comment Section"
+        android:text="Ghi chú:"
+        android:textColor="#d50000"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        app:layout_constraintHorizontal_bias="0.465"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        android:layout_marginTop="8dp"
         app:layout_constraintTop_toBottomOf="@+id/bComment" />
 
     <TextView
@@ -101,7 +112,10 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="8dp"
         android:layout_marginTop="8dp"
-        android:text="Location:"
+        android:text="Tọa độ Google Map:"
+        android:textColor="#d50000"
+        android:textSize="20dp"
+        android:textStyle="bold"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvContentArea" />
 
@@ -110,11 +124,29 @@
         android:layout_width="363dp"
         android:layout_height="wrap_content"
         android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
         android:layout_marginTop="8dp"
+        android:layout_marginRight="8dp"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvLocation" />
+
+    <ImageView
+        android:id="@+id/imageView5"
+        android:layout_width="76dp"
+        android:layout_height="74dp"
+        android:layout_marginTop="152dp"
+        app:layout_constraintStart_toEndOf="@+id/tvSubject"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/icon" />
+
+    <ImageButton
+        android:id="@+id/imageButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvLocationArea"
+        app:srcCompat="@android:drawable/ic_menu_mylocation" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -53,14 +53,14 @@ public class AlertInfoActivity extends AppCompatActivity implements View.OnClick
         alertUid = getIntent().getStringExtra("alertUid");
 
         mUser = FirebaseAuth.getInstance().getCurrentUser();
-        mFirebaseDatabase = FirebaseDatabase.getInstance().getReference().child("alerts").child(alertUid);
+        mFirebaseDatabase = FirebaseDatabase.getInstance().getReference().child("alerts").child(alertUid.split("_")[0]);
 
         mFirebaseDatabase.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 tvSubjectArea.setText(dataSnapshot.child("subject").getValue().toString());
                 tvContentArea.setText(dataSnapshot.child("content").getValue().toString());
-//                tvLocationArea.setText(dataSnapshot.child("location").getValue().toString());
+                tvLocationArea.setText(dataSnapshot.child("latLng").getValue().toString());
             }
 
             @Override

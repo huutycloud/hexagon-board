@@ -64,7 +64,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         bGoRegister = (Button) findViewById(R.id.bGoRegister);
         tvWelcome = (TextView) findViewById(R.id.tvWelcome);
         tvNoAcc = (TextView) findViewById(R.id.tvNoAcc);
-        tvCurVer = (TextView) findViewById(R.id.tvCurVer);
         progressDialog = new ProgressDialog(LoginActivity.this);
 
         // Init Firebase Authentication
